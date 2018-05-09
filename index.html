@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Socket IO</title>
+	</head>
+	<body>
+		<div class='container'>
+			<h1> Socket IO App</h1>
+			<div id='chat' style='min-height: 300px'></div>
+			<form id='sendMessage'>
+				<input type='text' size="35" id="username" placeholder='username'/><br/>
+				<input type='text' size="35" id="message" placeholder='message' />
+				<button type='submit' class='btn btn-primary'>Send</button>
+			</form>
+		</div>
+	</body>
+	<script src='/socket.io/socket.io.js'></script>
+	<script>
+		var socket = io.connect();
+		var messageForm = document.getElementById('sendMessage');
+		var message = document.getElementById('message');
+		var username = document.getElementById('username');
+		var chat = document.getElementById('chat');
+
+		messageForm.addEventListener('submit', function(e){
+			e.preventDefault();
+			var theMsg = { user: username.value, msg: message.value};
+			socket.emit('send-message', theMsg);
+			message.value = "";
+		});
+
+		socket.on('new-message', function(data){
+			chat.innerHTML += '<p> <strong>: '+ data.user + '</strong>' + data.msg + '</p>';
+		});
+
+	</script>
+</html>
