@@ -1,13 +1,13 @@
 {
   "name": "SocketIO_Chat_SmithaMilli",
   "version": "1.0.0",
-  "description": "",
+   "author": "Toufiq (https://twitter.com/burningraven06)",
+  "description" : "RChatApp - Nodejs & Socket IO ",
+  "keywords" : ["chat","chatapp","socket","socketio","node","express","javascript"],
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.3",
